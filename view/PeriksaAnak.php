@@ -83,6 +83,8 @@
                     <th scope="col">Usia</th>
                     <th scope="col">BB</th>
                     <th scope="col">TB</th>
+                    <th scope="col">LILA</th>
+                    <th scope="col">LK</th>
                     <th scope="col">Status Pemeriksaan</th>
                     <th scope="col">Aksi</th>
                   </tr>
@@ -113,11 +115,18 @@
                         <?=intval(date('Y'))-intval($fetch['anak_tahun_lahir']) . " Tahun";?>
                     </td>
                     <td>
-                        <?=$fetch['anak_berat_badan']." Kg";?>
+                        <?=$fetch['periksa_bb']." Kg";?>
                     </td>
                     <td>
-                        <?=$fetch['anak_tinggi_badan']." Cm";?>     
+                        <?=$fetch['periksa_tb']." Cm";?>     
                     </td>
+                    <td>
+                        <?=$fetch['periksa_lila']." Cm";?>     
+                    </td>
+                    <td>
+                        <?=$fetch['periksa_lk']." Cm";?>     
+                    </td>
+
                     <td>
                         <?php if($fetch['status_periksa']=='Belum Periksa'){
                             echo "<div class='badge bg-danger'>Belum Periksa</div>";

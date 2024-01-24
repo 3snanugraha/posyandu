@@ -81,10 +81,6 @@
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">TTL</th>
                     <th scope="col">Usia</th>
-                    <th scope="col">BB</th>
-                    <th scope="col">TB</th>
-                    <th scope="col">Imunisasi</th>
-                    <th scope="col">Vaksin</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -112,18 +108,6 @@
                     <td><?=$fetch['anak_tempat_lahir'] . ", " . $fetch['anak_tanggal_lahir'];?></td>
                     <td>
                         <?=intval(date('Y'))-intval($fetch['anak_tahun_lahir']) . " Tahun";?>
-                    </td>
-                    <td>
-                        <?=$fetch['anak_berat_badan']." Kg";?>
-                    </td>
-                    <td>
-                        <?=$fetch['anak_tinggi_badan']." Cm";?>     
-                    </td>
-                    <td>
-                        <?=$fetch['anak_imunisasi'];?>
-                    </td>
-                    <td>
-                        <?=$fetch['anak_vaksin'];?>
                     </td>
                     <td>
                         <a href="#" class="btn btn-sm btn-outline-warning rounded-pill mt-1"><i class="bi bi-pencil-square"></i></a>

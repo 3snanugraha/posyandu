@@ -73,42 +73,6 @@
             </div>
           </div>
 
-          <div class="row mt-2">
-            <div class="col-3">
-              <label for="anak_tinggi_badan">Tinggi Badan</label>
-            </div>
-            <div class="col-9">
-              <input type="number" class="form-control rounded-pill" name="anak_tinggi_badan" required>
-            </div>
-          </div>
-
-          <div class="row mt-2">
-            <div class="col-3">
-              <label for="anak_berat_badan">Berat Badan</label>
-            </div>
-            <div class="col-9">
-              <input type="number" class="form-control rounded-pill" name="anak_berat_badan" required>
-            </div>
-          </div>
-
-          <div class="row mt-2">
-            <div class="col-3">
-              <label for="anak_imunisasi">Imunisasi</label>
-            </div>
-            <div class="col-9">
-              <input type="text" class="form-control rounded-pill" name="anak_imunisasi" required>
-            </div>
-          </div>
-
-          <div class="row mt-2">
-            <div class="col-3">
-              <label for="anak_vaksin">Vaksin</label>
-            </div>
-            <div class="col-9">
-              <input type="text" class="form-control rounded-pill" name="anak_vaksin" required>
-            </div>
-          </div>
-
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batalkan</button>

@@ -88,13 +88,13 @@ function hapusDataAnak($nik){
 }
 
 // Fungsi Tambah Data Anak
-function tambahDataAnak($anak_NIK,$anak_nama_anak,$anak_nama_ibu,$anak_jenis_kelamin,$anak_tanggal_lahir,$anak_tempat_lahir,$anak_tinggi_badan,$anak_berat_badan,$anak_imunisasi,$anak_vaksin){
+function tambahDataAnak($anak_NIK,$anak_nama_anak,$anak_nama_ibu,$anak_jenis_kelamin,$anak_tanggal_lahir,$anak_tempat_lahir){
     include "../controller/Database.php";
     $check=mysqli_fetch_array(mysqli_query($conn,"SELECT anak_NIK FROM tblAnak WHERE anak_NIK='$anak_NIK'"));
     if(!empty($check['anak_NIK'])){
         echo "<script>alert('Tambah data tidak berhasil. NIK sudah ada, silahkan dicek kembali');window.location='../router/Router.php?u=data-anak';</script>";
     }else{
-        $result = mysqli_query($conn, "INSERT INTO tblAnak(anak_NIK,anak_nama_anak,anak_nama_ibu,anak_jenis_kelamin,anak_tanggal_lahir,anak_tempat_lahir,anak_tinggi_badan,anak_berat_badan,anak_imunisasi,anak_vaksin)VALUES('$anak_NIK','$anak_nama_anak','$anak_nama_ibu','$anak_jenis_kelamin','$anak_tanggal_lahir','$anak_tempat_lahir','$anak_tinggi_badan','$anak_berat_badan','$anak_imunisasi','$anak_vaksin')");
+        $result = mysqli_query($conn, "INSERT INTO tblAnak(anak_NIK,anak_nama_anak,anak_nama_ibu,anak_jenis_kelamin,anak_tanggal_lahir,anak_tempat_lahir)VALUES('$anak_NIK','$anak_nama_anak','$anak_nama_ibu','$anak_jenis_kelamin','$anak_tanggal_lahir','$anak_tempat_lahir')");
     
         if (!$result) {
             die("Query error: " . mysqli_error($conn));

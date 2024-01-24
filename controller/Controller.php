@@ -16,11 +16,7 @@ if(isset($_POST['login'])){
     $anak_jenis_kelamin=mysqli_real_escape_string($conn, $_POST['anak_jenis_kelamin']);
     $anak_tanggal_lahir=mysqli_real_escape_string($conn, $_POST['anak_tanggal_lahir']);
     $anak_tempat_lahir=mysqli_real_escape_string($conn, $_POST['anak_tempat_lahir']);
-    $anak_tinggi_badan=mysqli_real_escape_string($conn, $_POST['anak_tinggi_badan']);
-    $anak_berat_badan=mysqli_real_escape_string($conn, $_POST['anak_berat_badan']);
-    $anak_imunisasi=mysqli_real_escape_string($conn, $_POST['anak_imunisasi']);
-    $anak_vaksin=mysqli_real_escape_string($conn, $_POST['anak_vaksin']);
-    tambahDataAnak($anak_NIK,$anak_nama_anak,$anak_jenis_kelamin,$anak_tanggal_lahir,$anak_tempat_lahir,$anak_tinggi_badan,$anak_berat_badan,$anak_imunisasi,$anak_vaksin);
+    tambahDataAnak($anak_NIK,$anak_nama_anak,$anak_jenis_kelamin,$anak_tanggal_lahir,$anak_tempat_lahir);
 }else if(isset($_POST['update-pengaturan'])){
     $id='1';
     $png_nama_pengaturan='Pengaturan Basic';
