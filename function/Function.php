@@ -99,6 +99,7 @@ function tambahDataAnak($anak_NIK,$anak_nama_anak,$anak_nama_ibu,$anak_jenis_kel
         if (!$result) {
             die("Query error: " . mysqli_error($conn));
         }else{
+            echo "<script>alert('Data berhasil ditambahkan.');</script>";
             header('location:../router/Router.php?u=data-anak');
         }
     }
@@ -218,7 +219,7 @@ function getDataPemeriksaanAnak(){
         $datenow=date("Y-m-d");
         $query_anak=mysqli_query($conn, "SELECT * FROM tblAnak");
         while($generate_anak=mysqli_fetch_array($query_anak)){
-            $generate_pemeriksaan=mysqli_query($conn, "INSERT INTO tblPeriksaAnak(anak_NIK,status_periksa,keterangan,tanggal_periksa)VALUES('$generate_anak[anak_NIK]','Belum Periksa','-','$datenow')");
+            $generate_pemeriksaan=mysqli_query($conn, "INSERT INTO tblPeriksaAnak(anak_NIK,status_periksa,periksa_tb,periksa_bb,periksa_lila,periksa_lk,keterangan,tanggal_periksa)VALUES('$generate_anak[anak_NIK]','Belum Periksa','-','-','-','-','-','$datenow')");
             if($generate_pemeriksaan){
                 echo "<script>console.log('Berhasil');</script>";
             }
@@ -238,8 +239,27 @@ function getDataPemeriksaanAnak(){
         return $array;
 
     }
+}
 
+// Entry Anak / Update Pemeriksaan Anak
+function periksaAnakEntry($id_pemeriksaan,$anak_NIK,$periksa_tb,$periksa_bb,$periksa_lila,$periksa_lk,$keterangan){
+    include "../controller/Database.php";
+    $tanggal_periksa=date("Y-m-d");
+    $update=mysqli_query($conn, "UPDATE tblPeriksaAnak SET 
+    anak_NIK='$anak_NIK',
+    status_periksa='Sudah Periksa',
+    periksa_tb='$periksa_tb',
+    periksa_bb='$periksa_bb',
+    periksa_lila='$periksa_lila',
+    periksa_lk='$periksa_lk',
+    keterangan='$keterangan',
+    tanggal_periksa='$tanggal_periksa'
+    WHERE id_pemeriksaan='$id_pemeriksaan'");
     
-
+    if($update){
+        echo "<script>alert('Periksa Anak Berhasil. Data berhasil diupdate.');window.location='../router/Router.php?u=pemeriksaan-anak';</script>";
+    }else{
+        echo "<script>alert('Periksa Anak Gagal. Data tidak dapat diupdate.');window.location='../router/Router.php?u=pemeriksaan-anak';</script>";
+    }
 }
 ?>
