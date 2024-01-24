@@ -127,7 +127,7 @@
         </a>
         <ul id="menu-laporan" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
+            <a href="<?= $_SERVER['PHP_SELF'] . "?u=laporan-pemeriksaan-anak";?>">
               <i class="bi bi-circle"></i><span>L.Pemeriksaan Anak-anak</span>
             </a>
           </li>

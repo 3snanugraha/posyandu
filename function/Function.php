@@ -276,4 +276,9 @@ function periksaAnakEntry($anak_NIK,$periksa_tb,$periksa_bb,$periksa_lila,$perik
         echo "<script>alert('Periksa Anak Gagal. Data tidak dapat diupdate.');window.location='../router/Router.php?u=pemeriksaan-anak';</script>";
     }
 }
+
+// Cetak Laporan Anak
+function cetakLaporanAnak($dari_tanggal,$sampai_tanggal){
+    
+}
 ?>
