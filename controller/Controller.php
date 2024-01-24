@@ -18,14 +18,13 @@ if(isset($_POST['login'])){
     $anak_tempat_lahir=mysqli_real_escape_string($conn, $_POST['anak_tempat_lahir']);
     tambahDataAnak($anak_NIK,$anak_nama_anak,$anak_nama_ibu,$anak_jenis_kelamin,$anak_tanggal_lahir,$anak_tempat_lahir);
 }else if(isset($_POST['periksa-anak-entry'])){
-    $id_pemeriksaan=mysqli_real_escape_string($conn, $_POST['id_pemeriksaan']);
     $anak_NIK=mysqli_real_escape_string($conn, $_POST['anak_NIK']);
     $periksa_tb=mysqli_real_escape_string($conn, $_POST['periksa_tb']);
     $periksa_bb=mysqli_real_escape_string($conn, $_POST['periksa_bb']);
     $periksa_lila=mysqli_real_escape_string($conn, $_POST['periksa_lila']);
     $periksa_lk=mysqli_real_escape_string($conn, $_POST['periksa_lk']);
     $keterangan=mysqli_real_escape_string($conn, $_POST['keterangan']);
-    periksaAnakEntry($id_pemeriksaan,$anak_NIK,$periksa_tb,$periksa_bb,$periksa_lila,$periksa_lk,$keterangan);
+    periksaAnakEntry($anak_NIK,$periksa_tb,$periksa_bb,$periksa_lila,$periksa_lk,$keterangan);
 }else if(isset($_POST['update-pengaturan'])){
     $id='1';
     $png_nama_pengaturan='Pengaturan Basic';

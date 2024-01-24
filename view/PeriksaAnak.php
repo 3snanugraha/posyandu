@@ -196,7 +196,7 @@
     // In your Javascript (external .js resource or <script> tag)
     $(document).ready(function() {
         $('#anak_NIK').select2({
-          dropdownParent: $('#periksa-anak'),
+          dropdownParent: $('#periksa-anak .modal-content'),
           theme: "bootstrap-5",
         });
     });

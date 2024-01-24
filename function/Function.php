@@ -91,12 +91,14 @@ function hapusDataAnak($nik){
 function tambahDataAnak($anak_NIK,$anak_nama_anak,$anak_nama_ibu,$anak_jenis_kelamin,$anak_tanggal_lahir,$anak_tempat_lahir){
     include "../controller/Database.php";
     $check=mysqli_fetch_array(mysqli_query($conn,"SELECT anak_NIK FROM tblAnak WHERE anak_NIK='$anak_NIK'"));
+    $datenow=date("Y-m-d");
     if(!empty($check['anak_NIK'])){
         echo "<script>alert('Tambah data tidak berhasil. NIK sudah ada, silahkan dicek kembali');window.location='../router/Router.php?u=data-anak';</script>";
     }else{
         $result = mysqli_query($conn, "INSERT INTO tblAnak(anak_NIK,anak_nama_anak,anak_nama_ibu,anak_jenis_kelamin,anak_tanggal_lahir,anak_tempat_lahir)VALUES('$anak_NIK','$anak_nama_anak','$anak_nama_ibu','$anak_jenis_kelamin','$anak_tanggal_lahir','$anak_tempat_lahir')");
-    
-        if (!$result) {
+        $result2 = mysqli_query($conn, "INSERT INTO tblPeriksaAnak(anak_NIK,status_periksa,periksa_tb,periksa_bb,periksa_lila,periksa_lk,keterangan,tanggal_periksa)VALUES('$anak_NIK','Belum Periksa','-','-','-','-','-','$datenow')");
+
+        if (!$result && !$result2) {
             die("Query error: " . mysqli_error($conn));
         }else{
             echo "<script>alert('Data berhasil ditambahkan.');</script>";
@@ -240,13 +242,25 @@ function getDataPemeriksaanAnak(){
 
     }
 }
+// Get Data Periksa Anak
+function getPeriksaAnak(){
+    include "../controller/Database.php";
+    $result = mysqli_query($conn, "SELECT * FROM tblPeriksaAnak INNER JOIN tblAnak ON tblPeriksaAnak.anak_NIK=tblAnak.anak_NIK");
+    if (!$result) {
+        die("Query error: " . mysqli_error($conn));
+    }
 
+    $array = [];
+    while ($box = mysqli_fetch_array($result)) {
+        $array[] = $box;
+    }
+    return $array;
+}
 // Entry Anak / Update Pemeriksaan Anak
-function periksaAnakEntry($id_pemeriksaan,$anak_NIK,$periksa_tb,$periksa_bb,$periksa_lila,$periksa_lk,$keterangan){
+function periksaAnakEntry($anak_NIK,$periksa_tb,$periksa_bb,$periksa_lila,$periksa_lk,$keterangan){
     include "../controller/Database.php";
     $tanggal_periksa=date("Y-m-d");
     $update=mysqli_query($conn, "UPDATE tblPeriksaAnak SET 
-    anak_NIK='$anak_NIK',
     status_periksa='Sudah Periksa',
     periksa_tb='$periksa_tb',
     periksa_bb='$periksa_bb',
@@ -254,7 +268,7 @@ function periksaAnakEntry($id_pemeriksaan,$anak_NIK,$periksa_tb,$periksa_bb,$per
     periksa_lk='$periksa_lk',
     keterangan='$keterangan',
     tanggal_periksa='$tanggal_periksa'
-    WHERE id_pemeriksaan='$id_pemeriksaan'");
+    WHERE anak_NIK='$anak_NIK'");
     
     if($update){
         echo "<script>alert('Periksa Anak Berhasil. Data berhasil diupdate.');window.location='../router/Router.php?u=pemeriksaan-anak';</script>";

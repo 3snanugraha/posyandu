@@ -107,10 +107,14 @@
               <label for="nik">Pilih NIK / Nama</label>
             </div>
             <div class="col-9">
-            <select class="form-select" id="anak_NIK" name="anak_NIK">
-              <option value="AL">Alabama</option>
-              <option value="WASD">wasd</option>
-              <option value="WY">Wyoming</option>
+            <select class="form-select" id="anak_NIK" name="anak_NIK" required>
+            <option value="">Pilih NIK & Nama</option>
+              <?php
+                    $data_anak=getPeriksaAnak();
+                    foreach($data_anak as $fetch_anak){
+              ?>
+              <option value="<?= $fetch_anak['anak_NIK'];?>"><?= $fetch_anak['anak_NIK'] . " - " . $fetch_anak['anak_nama_anak'];?></option>
+              <?php } ?>
             </select>
             </div>
           </div>
@@ -164,7 +168,7 @@
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batalkan</button>
-         <button class="btn btn-primary rounded-pill" type="submit" name="tambah-data-anak" href="#">Simpan</button>
+         <button class="btn btn-primary rounded-pill" type="submit" name="periksa-anak-entry" href="#">Simpan</button>
       <br>
       </form>
       </div>
