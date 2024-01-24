@@ -421,7 +421,78 @@
               <label for="jenis_pelayanan">Jenis Pelayanan</label>
             </div>
             <div class="col-9">
-              <select name="jenis_layanan" class="form-select rounded-pill" required>
+              <select name="jenis_pelayanan" class="form-select rounded-pill" required>
+                  <option value="">Pilih Jenis Layanan</option>
+                  <option value="Pil">1. PIL KB</option>
+                  <option value="Kondom">2. Kondom</option>
+                  <option value="Suntik">3. Suntik</option>
+                  <option value="IUD">4. IUD</option>
+                  <option value="Implan">5. Implan</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="keterangan">Keterangan</label>
+            </div>
+            <div class="col-9">
+              <textarea rows="3" class="form-control rounded-3" name="keterangan" required></textarea>
+            </div>
+          </div>
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batalkan</button>
+         <button class="btn btn-primary rounded-pill" type="submit" name="periksa-ibu" href="#">Simpan</button>
+      <br>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End modal -->
+
+<!-- Modal Periksa Ibu (Edit) -->
+<div class="modal fade" id="periksa-ibu-entry" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Jenis Pelayanan Ibu pada Periode Ini</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="../controller/Controller.php" method="post">
+        <div class="d-flex justify-content-center">
+        <img class="img-fluid" width="120px" width="auto" src="../assets/img/mother.png" rel="icon">
+        </div>
+        
+          <h6 class="text-center">Silahkan lengkapi data dengan lengkap di bawah ini. </h6><hr>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="nik">Pilih NIK / Nama Ibu</label>
+            </div>
+            <div class="col-9">
+            <select class="form-select" id="ibu_nik-entry" name="ibu_nik" required>
+            <option value="">Pilih NIK & Nama Ibu</option>
+              <?php
+                    $data_ibu=getPeriksaIbu();
+                    foreach($data_ibu as $fetch_ibu){
+              ?>
+              <option value="<?= $fetch_ibu['ibu_nik'];?>"><?= $fetch_ibu['ibu_nik'] . " - " . $fetch_ibu['ibu_nama'];?></option>
+              <?php } ?>
+            </select>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="jenis_pelayanan">Jenis Pelayanan</label>
+            </div>
+            <div class="col-9">
+              <select name="jenis_pelayanan" class="form-select rounded-pill" required>
                   <option value="">Pilih Jenis Layanan</option>
                   <option value="Pil">1. PIL KB</option>
                   <option value="Kondom">2. Kondom</option>

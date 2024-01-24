@@ -252,6 +252,38 @@ function tambahDataIbu($ibu_nik,$ibu_nama,$ibu_nama_suami,$ibu_tanggal_lahir,$ib
     }
 
 }
+// Get Data Periksa Ibu
+function getPeriksaIbu(){
+    include "../controller/Database.php";
+    $result = mysqli_query($conn, "SELECT * FROM tblPeriksaIbu INNER JOIN tblIbu ON tblPeriksaIbu.ibu_nik=tblIbu.ibu_nik");
+    if (!$result) {
+        die("Query error: " . mysqli_error($conn));
+    }
+
+    $array = [];
+    while ($box = mysqli_fetch_array($result)) {
+        $array[] = $box;
+    }
+    return $array;
+}
+
+// Entry Ibu / Update Pemeriksaan Ibu
+function periksaIbu($ibu_nik,$jenis_pelayanan,$keterangan){
+    include "../controller/Database.php";
+    $tanggal_periksa=date("Y-m-d");
+    $update=mysqli_query($conn, "UPDATE tblPeriksaIbu SET 
+    status_periksa='Sudah Periksa',
+    jenis_pelayanan='$jenis_pelayanan',
+    keterangan='$keterangan',
+    tanggal_periksa='$tanggal_periksa'
+    WHERE ibu_nik='$ibu_nik'");
+    
+    if($update){
+        echo "<script>alert('Pelayanan Ibu Berhasil. Data berhasil diupdate.');window.location='../router/Router.php?u=pemeriksaan-ibu';</script>";
+    }else{
+        echo "<script>alert('Periksa Ibu Gagal. Data tidak dapat diupdate.');window.location='../router/Router.php?u=pemeriksaan-ibu';</script>";
+    }
+}
 
 // HapusData
 function hapusDataIbu($nik){

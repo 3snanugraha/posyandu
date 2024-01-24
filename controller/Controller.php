@@ -27,6 +27,11 @@ if(isset($_POST['login'])){
     $periksa_lk=mysqli_real_escape_string($conn, $_POST['periksa_lk']);
     $keterangan=mysqli_real_escape_string($conn, $_POST['keterangan']);
     periksaAnakEntry($anak_NIK,$periksa_tb,$periksa_bb,$periksa_lila,$periksa_lk,$keterangan);
+}else if(isset($_POST['periksa-ibu'])){
+    $ibu_nik=mysqli_real_escape_string($conn, $_POST['ibu_nik']);
+    $jenis_pelayanan=mysqli_real_escape_string($conn, $_POST['jenis_pelayanan']);
+    $keterangan=mysqli_real_escape_string($conn, $_POST['keterangan']);
+    periksaIbu($ibu_nik,$jenis_pelayanan,$keterangan);
 }else if(isset($_POST['cetak-laporan-anak'])){
     $dari_tanggal=mysqli_real_escape_string($conn, $_POST['dari_tanggal']);
     $sampai_tanggal=mysqli_real_escape_string($conn, $_POST['sampai_tanggal']);

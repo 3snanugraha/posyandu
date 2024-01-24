@@ -112,13 +112,13 @@
                             echo "<a href='#' data-bs-toggle='modal' data-bs-target='#periksa-ibu' class='btn btn-sm btn-outline-primary rounded-5'
                             data-bs-id_pemeriksaan='{$fetch["id_pemeriksaan"]}'
                             data-bs-niknamaibu='{$fetch["ibu_nik"]} - {$fetch["ibu_nama"]}'
-                            data-bs-ibu_nik='{$fetch["ibu_nik"]}'><i class='bi bi-calendar2-check-fill'></i><span> Jenis Pelayanan / Edit</span></a>";
+                            data-bs-ibu_nik='{$fetch["ibu_nik"]}'><i class='bi bi-calendar2-check-fill'></i><span> Tambah Pelayanan / Edit</span></a>";
                         }else if($fetch['status_periksa']=='Sudah Periksa'){
                             echo "<div class='badge bg-success mb-2'>Sudah Periksa</div>";
                             echo "<a href='#' data-bs-toggle='modal' data-bs-target='#periksa-ibu' class='btn btn-sm btn-outline-primary rounded-5'
                             data-bs-id_pemeriksaan='{$fetch["id_pemeriksaan"]}'
                             data-bs-niknamaibu='{$fetch["ibu_nik"]} - {$fetch["ibu_nama"]}'
-                            data-bs-ibu_nik='{$fetch["ibu_nik"]}'><i class='bi bi-calendar2-check-fill'></i><span> Jenis Pelayanan / Edit</span></a>";
+                            data-bs-ibu_nik='{$fetch["ibu_nik"]}'><i class='bi bi-calendar2-check-fill'></i><span> Tambah Pelayanan / Edit</span></a>";
                         };?>     
                     </td>
                   </tr>
