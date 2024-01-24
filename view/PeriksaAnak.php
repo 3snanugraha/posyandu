@@ -130,6 +130,7 @@
                     <td>
                         <?php if($fetch['status_periksa']=='Belum Periksa'){
                             echo "<div class='badge bg-danger'>Belum Periksa</div>";
+                            echo "<a href='#' class='btn btn-sm btn-outline-success rounded-5'>Periksa</a>";
                         };?>     
                     </td>
                     <td>
