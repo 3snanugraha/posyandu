@@ -26,7 +26,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="<?= $_SERVER['PHP_SELF'] . "?u=pemeriksaan-ibu"?>">
               <i class="bi bi-circle"></i><span>Pemeriksaan Ibu</span>
             </a>
           </li>

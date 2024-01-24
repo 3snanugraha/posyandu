@@ -186,6 +186,52 @@ function getDataIbu(){
     return $array;
 }
 
+// Fungsi Ambil Data Pemeriksaan Anak
+function getDataPemeriksaanIbu(){
+    include "../controller/Database.php";
+    // Cek Bulan Sekarang
+    $bulan_sekarang=date('m');
+    $fetch_bulan=mysqli_fetch_array(mysqli_query($conn, "SELECT *,MONTH(tanggal_periksa) AS bulan_periksa from tblPeriksaIbu ORDER BY tanggal_periksa DESC LIMIT 1;"));
+    
+    if($bulan_sekarang==$fetch_bulan['bulan_periksa']){
+            // Jika data di bulan sekarang ada, maka Tampilkan data pemeriksaan bulan sekarang
+            $result = mysqli_query($conn, "SELECT *,YEAR(tblIbu.ibu_tanggal_lahir) AS ibu_tahun_lahir FROM tblPeriksaIbu INNER JOIN tblIbu ON tblPeriksaIbu.ibu_nik=tblIbu.ibu_nik WHERE MONTH(tanggal_periksa)='$bulan_sekarang'");
+            if (!$result) {
+                die("Query error: " . mysqli_error($conn));
+            }
+
+            $array = [];
+            while ($box = mysqli_fetch_array($result)) {
+                $array[] = $box;
+            }
+            return $array;
+    }else{
+        echo "<script>alert('Periode bulan telah hangus. akan generate data baru untuk bulan ini. Jika ada belum ganti bulan silahkan atur kembali tanggal pada Komputer anda.');</script>";
+        $datenow=date("Y-m-d");
+        $query_ibu=mysqli_query($conn, "SELECT * FROM tblIbu");
+        while($generate_ibu=mysqli_fetch_array($query_ibu)){
+            $generate_pemeriksaan=mysqli_query($conn, "INSERT INTO tblPeriksaIbu(ibu_nik,jenis_pelayanan,tanggal_periksa,keterangan,status_periksa)VALUES('$generate_ibu[ibu_nik]','-','$datenow','-','Belum Periksa')");
+            if($generate_pemeriksaan){
+                echo "<script>console.log('Berhasil');</script>";
+            }
+        }
+        echo "<script>alert('Generate berhasil');location.reload();</script>";
+
+        // Setelah selesai generate. tampilkan data
+        $result = mysqli_query($conn, "SELECT *,YEAR(tblIbu.ibu_tanggal_lahir) AS ibu_tahun_lahir FROM tblPeriksaIbu INNER JOIN tblIbu ON tblPeriksaIbu.ibu_nik=tblIbu.ibu_nik");
+        if (!$result) {
+            die("Query error: " . mysqli_error($conn));
+        }
+
+        $array = [];
+        while ($box = mysqli_fetch_array($result)) {
+            $array[] = $box;
+        }
+        return $array;
+
+    }
+}
+
 // Fungsi Tambah Data Ibu
 function tambahDataIbu($ibu_nik,$ibu_nama,$ibu_nama_suami,$ibu_tanggal_lahir,$ibu_alamat){
     include "../controller/Database.php";

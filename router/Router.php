@@ -20,6 +20,9 @@ if($url=="login"){
 }else if($url=="pemeriksaan-anak"){
     SessionCheck();
     include "../view/PeriksaAnak.php";
+}else if($url=="pemeriksaan-ibu"){
+    SessionCheck();
+    include "../view/PeriksaIbu.php";
 }else if($url=="laporan-pemeriksaan-anak"){
     SessionCheck();
     include "../view/LaporanPAnak.php";
