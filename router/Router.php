@@ -33,6 +33,9 @@ if($url=='login'){
 }else if($url=='data-lansia'){
     SessionCheck();
     include "../view/DataLansia.php";
+}else if($url=='data-ibu'){
+    SessionCheck();
+    include "../view/DataIbu.php";
 }else if($url=='akun'){
     SessionCheck();
     include "../view/Akun.php";

@@ -42,11 +42,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Data Lansia</h1>
+      <h1>Data Ibu</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Data Lansia</li>
+          <li class="breadcrumb-item active">Data Ibu</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -58,8 +58,8 @@
 
           <div class="card rounded-4">
             <div class="card-body">
-              <h5 class="card-title">Data Lansia</h5>
-              <p>Berikut adalah semua data lansia gunakan <code>.Search </code> untuk mencari atau memfilter data. gunakan kolom <code>.Aksi </code> untuk mengolah data.</p>
+              <h5 class="card-title">Data Ibu</h5>
+              <p>Berikut adalah semua data ibu gunakan <code>.Search </code> untuk mencari atau memfilter data. gunakan kolom <code>.Aksi </code> untuk mengolah data.</p>
               <a href="#" data-bs-toggle="modal" data-bs-target="#tambah-data-lansia" class="btn btn-outline-primary mt-2 mb-4 rounded-pill"><i class="bi bi-plus-circle"></i><span> Tambahkan data </span></a>
               <a href="<?= $_SERVER['PHP_SELF'] . "?u=data-lansia"?>" class="btn btn-outline-warning mt-2 mb-4 rounded-pill"><i class="bi bi-arrow-clockwise"></i><span> Refresh data </span></a>
 

@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
 }else if(isset($_POST['cetak-laporan-anak'])){
     $dari_tanggal=mysqli_real_escape_string($conn, $_POST['dari_tanggal']);
     $sampai_tanggal=mysqli_real_escape_string($conn, $_POST['sampai_tanggal']);
-    cetakLaporanAnak($dari_tanggal,$sampai_tanggal);
+    include "../view/CetakLaporanAnak.php";
 }else if(isset($_POST['update-pengaturan'])){
     $id='1';
     $png_nama_pengaturan='Pengaturan Basic';

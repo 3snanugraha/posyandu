@@ -279,6 +279,16 @@ function periksaAnakEntry($anak_NIK,$periksa_tb,$periksa_bb,$periksa_lila,$perik
 
 // Cetak Laporan Anak
 function cetakLaporanAnak($dari_tanggal,$sampai_tanggal){
-    
+    include "../controller/Database.php";
+    $result = mysqli_query($conn, "SELECT * FROM tblPeriksaAnak INNER JOIN tblAnak ON tblPeriksaAnak.anak_NIK=tblAnak.anak_NIK WHERE tanggal_periksa BETWEEN '$dari_tanggal' AND '$sampai_tanggal'");
+    if (!$result) {
+        die("Query error: " . mysqli_error($conn));
+    }
+
+    $array = [];
+    while ($box = mysqli_fetch_array($result)) {
+        $array[] = $box;
+    }
+    return $array;
 }
 ?>
