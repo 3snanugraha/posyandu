@@ -25,6 +25,8 @@
   <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="../assets/vendor/select2/select2.min.css" rel="stylesheet">
+  <link href="../assets/vendor/select2/select2-bootstrap-5-theme.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
@@ -42,11 +44,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Data Ibu</h1>
+      <h1>Pemeriksaan Ibu Semua Periode</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Data Ibu</li>
+          <li class="breadcrumb-item active">L. Pemeriksaan Ibu Semua Periode</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -58,9 +60,9 @@
 
           <div class="card rounded-4">
             <div class="card-body">
-              <h5 class="card-title">Data Ibu</h5>
-              <p>Berikut adalah semua data ibu gunakan <code>.Search </code> untuk mencari atau memfilter data. gunakan kolom <code>.Aksi </code> untuk mengolah data.</p>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#tambah-data-ibu" class="btn btn-outline-primary mt-2 mb-4 rounded-pill"><i class="bi bi-plus-circle"></i><span> Tambahkan data </span></a>
+              <h5 class="card-title">Laporan Pemeriksaan Ibu Semua Periode </h5>
+              <p>Berikut adalah semua laporan pemeriksaan data ibu gunakan <code>.Search </code> untuk mencari atau memfilter data. gunakan button <code>.Cetak </code> untuk mencetak data berdasarkan range tanggal.</p>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#cetak-laporan-ibu" class="btn btn-outline-primary mt-2 mb-4 rounded-pill"><i class="bi bi-printer"></i><span> Cetak Laporan</span></a>
               <a href="#" onclick="location.reload();" class="btn btn-outline-warning mt-2 mb-4 rounded-pill"><i class="bi bi-arrow-clockwise"></i><span> Refresh data </span></a>
 
               <!-- Table with stripped rows -->
@@ -69,18 +71,24 @@
                 <thead>
                   <tr>
                     <th scope="col">#No</th>
-                    <th scope="col">NIK Ibu</th>
-                    <th scope="col">Nama Lengkap</th>
-                    <th scope="col">Alamat</th>
-                    <th scope="col">Tgl Lahir</th>
+                    <th scope="col">NIK Anak</th>
+                    <th scope="col">Nama Anak</th>
+                    <th scope="col">Nama Ibu</th>
+                    <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">TTL</th>
                     <th scope="col">Usia</th>
-                    <th scope="col">Nama Suami</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col">BB</th>
+                    <th scope="col">TB</th>
+                    <th scope="col">LILA</th>
+                    <th scope="col">LK</th>
+                    <th scope="col">Keterangan</th>
+                    <th scope="col">Status Pemeriksaan</th>
+                    <th scope="col">Periode/Bulan</th>
                   </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $data=getDataIbu();
+                    $data=getDataPemeriksaanAnak();
                     $no=0;
                     foreach($data as $fetch){
                     $no++;
@@ -88,24 +96,45 @@
                   <tr>
                     <th scope="row"><b>&nbsp;&nbsp;&nbsp;&nbsp;<?=$no;?></b></th>
                     <td>
-                        <?=$fetch['ibu_nik'];?>
+                        <?=$fetch['anak_NIK'];?>
                     </td>
                     <td>
-                        <?=$fetch['ibu_nama'];?>
+                        <?=$fetch['anak_nama_anak'];?>
+                    </td>               
+                    <td>
+                        <?=$fetch['anak_nama_ibu'];?>
                     </td>  
                     <td>
-                        <?=$fetch['ibu_alamat'];?>
+                        <?=$fetch['anak_jenis_kelamin'];?>
                     </td>
-                    <td><?=$fetch['ibu_tanggal_lahir'];?></td>
+                    <td><?=$fetch['anak_tempat_lahir'] . ", " . $fetch['anak_tanggal_lahir'];?></td>
                     <td>
-                        <?=intval(date('Y'))-intval($fetch['ibu_tahun_lahir']) . " Tahun";?>
-                    </td>
-                    <td>
-                        <?=$fetch['ibu_nama_suami'];?>
+                        <?=intval(date('Y'))-intval($fetch['anak_tahun_lahir']) . " Tahun";?>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-outline-warning rounded-pill mt-1"><i class="bi bi-pencil-square"></i></a>
-                        <a onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" href="<?= $_SERVER['PHP_SELF'] . '?u=del-data-ibu&nik=' . $fetch['ibu_nik'] ?>" class="btn btn-sm btn-outline-danger rounded-pill mt-1"><i class="bi bi-trash"></i></a>
+                        <?=$fetch['periksa_bb']." Kg";?>
+                    </td>
+                    <td>
+                        <?=$fetch['periksa_tb']." Cm";?>     
+                    </td>
+                    <td>
+                        <?=$fetch['periksa_lila']." Cm";?>     
+                    </td>
+                    <td>
+                        <?=$fetch['periksa_lk']." Cm";?>     
+                    </td>
+                    <td>
+                        <?=$fetch['keterangan'];?>     
+                    </td>
+                    <td>
+                        <?php if($fetch['status_periksa']=='Belum Periksa'){
+                            echo "<div class='badge bg-danger mb-2'>Belum Periksa</div>";
+                        }else if($fetch['status_periksa']=='Sudah Periksa'){
+                            echo "<div class='badge bg-success mb-2'>Sudah Periksa</div>";
+                        };?>     
+                    </td>
+                    <td>
+                        <?=$fetch['tanggal_periksa'];?>     
                     </td>
                   </tr>
                   <?php } ?>
@@ -125,11 +154,13 @@
 
   <!-- ======= Footer ======= -->
   <?php include "Footer.php"; ?>
-  <!-- End Footer -->
+  <?php include "Modal.php"; ?>
 
+  <!-- End Footer -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+
   <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/vendor/chart.js/chart.umd.js"></script>
@@ -142,6 +173,7 @@
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
 
+
 </body>
-<?php include "Modal.php"; ?>
+
 </html>

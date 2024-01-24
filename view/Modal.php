@@ -310,3 +310,81 @@
   </div>
 </div>
 <!-- End modal -->
+
+
+<!-- ===== -->
+<!-- MODAL IBU -->
+<!-- ------- -->
+<!-- Modal Tambah Data Ibu -->
+<div class="modal fade" id="tambah-data-ibu" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Ibu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="../controller/Controller.php" method="post">
+        <div class="d-flex justify-content-center">
+        <img class="img-fluid" width="120px" width="auto" src="../assets/img/mother.png" rel="icon">
+        </div>
+        
+          <h6 class="text-center">Silahkan isi data dengan lengkap di bawah ini. </h6><hr>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="ibu_nik">NIK Ibu</label>
+            </div>
+            <div class="col-9">
+              <input type="text" class="form-control rounded-pill" name="ibu_nik" required>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="ibu_nama">Nama Lengkap</label>
+            </div>
+            <div class="col-9">
+              <input type="text" class="form-control rounded-pill" name="ibu_nama" required>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="ibu_nama_suami">Nama Suami</label>
+            </div>
+            <div class="col-9">
+              <input type="text" class="form-control rounded-pill" name="ibu_nama_suami" required>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="ibu_tanggal_lahir">Tanggal Lahir</label>
+            </div>
+            <div class="col-9">
+              <input type="date" class="form-control rounded-pill" name="ibu_tanggal_lahir" required>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="ibu_alamat">Alamat Lengkap</label>
+            </div>
+            <div class="col-9">
+              <textarea rows="3" class="form-control rounded-4" name="ibu_alamat" required></textarea>
+            </div>
+          </div>
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batalkan</button>
+         <button class="btn btn-primary rounded-pill" type="submit" name="tambah-data-ibu" href="#">Simpan</button>
+      <br>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End modal -->

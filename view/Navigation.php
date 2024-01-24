@@ -137,7 +137,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="<?= $_SERVER['PHP_SELF'] . "?u=laporan-pemeriksaan-ibu";?>">
               <i class="bi bi-circle"></i><span>L.Pemeriksaan Ibu</span>
             </a>
           </li>

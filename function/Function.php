@@ -37,7 +37,7 @@ function getDataAnak(){
     return $array;
 }
 
-// Fungsi Ambil Data Anak
+// Fungsi Ambil Data Lansia
 function getDataLansia(){
     include "../controller/Database.php";
     $result = mysqli_query($conn, "SELECT *,YEAR(lansia_tanggal_lahir) AS lansia_tahun_lahir,MONTH(lansia_tanggal_lahir) AS lansia_bulan_lahir FROM tblLansia");
@@ -169,6 +169,55 @@ function updateAkunAdmin($id,$adm_username,$adm_password,$adm_password_verificat
 
     }
 }
+
+// Function Ibu
+// Fungsi Ambil Data Ibu
+function getDataIbu(){
+    include "../controller/Database.php";
+    $result = mysqli_query($conn, "SELECT *,YEAR(ibu_tanggal_lahir) AS ibu_tahun_lahir,MONTH(ibu_tanggal_lahir) AS ibu_bulan_lahir FROM tblIbu");
+    if (!$result) {
+        die("Query error: " . mysqli_error($conn));
+    }
+
+    $array = [];
+    while ($box = mysqli_fetch_array($result)) {
+        $array[] = $box;
+    }
+    return $array;
+}
+
+// Fungsi Tambah Data Ibu
+function tambahDataIbu($ibu_nik,$ibu_nama,$ibu_nama_suami,$ibu_tanggal_lahir,$ibu_alamat){
+    include "../controller/Database.php";
+    $check=mysqli_fetch_array(mysqli_query($conn,"SELECT ibu_nik FROM tblIbu WHERE ibu_nik='$ibu_nik'"));
+    $datenow=date("Y-m-d");
+    if(!empty($check['ibu_nik'])){
+        echo "<script>alert('Tambah data tidak berhasil. NIK sudah ada, silahkan dicek kembali');window.location='../router/Router.php?u=data-ibu';</script>";
+    }else{
+        $result = mysqli_query($conn, "INSERT INTO tblIbu(ibu_nik,ibu_nama,ibu_nama_suami,ibu_tanggal_lahir,ibu_alamat)VALUES('$ibu_nik','$ibu_nama','$ibu_nama_suami','$ibu_tanggal_lahir','$ibu_alamat')");
+
+        // $result2 = mysqli_query($conn, "INSERT INTO tblPeriksaAnak(anak_NIK,status_periksa,periksa_tb,periksa_bb,periksa_lila,periksa_lk,keterangan,tanggal_periksa)VALUES('$anak_NIK','Belum Periksa','-','-','-','-','-','$datenow')");
+
+        if (!$result) {
+            die("Query error: " . mysqli_error($conn));
+        }else{
+            echo "<script>alert('Data berhasil ditambahkan.');window.location='../router/Router.php?u=data-ibu'</script>";
+        }
+    }
+
+}
+
+// HapusData
+function hapusDataIbu($nik){
+    include "../controller/Database.php";
+    $result = mysqli_query($conn, "DELETE FROM tblIbu WHERE ibu_nik='$nik'");
+    if (!$result) {
+        die("Query error: " . mysqli_error($conn));
+    }else{
+        echo "<script>alert('Delete data berhasil.');window.location='../router/Router.php?u=data-ibu'</script>";
+    }
+}
+
 
 
 // ==============================================

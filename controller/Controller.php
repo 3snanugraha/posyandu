@@ -5,6 +5,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+
+
 if(isset($_POST['login'])){
     $username=mysqli_real_escape_string($conn, $_POST['username']);
     $password=mysqli_real_escape_string($conn, $_POST['password']);
@@ -29,6 +31,13 @@ if(isset($_POST['login'])){
     $dari_tanggal=mysqli_real_escape_string($conn, $_POST['dari_tanggal']);
     $sampai_tanggal=mysqli_real_escape_string($conn, $_POST['sampai_tanggal']);
     include "../view/CetakLaporanAnak.php";
+}else if(isset($_POST['tambah-data-ibu'])){
+    $ibu_nik=mysqli_real_escape_string($conn, $_POST['ibu_nik']);
+    $ibu_nama=mysqli_real_escape_string($conn, $_POST['ibu_nama']);
+    $ibu_nama_suami=mysqli_real_escape_string($conn, $_POST['ibu_nama_suami']);
+    $ibu_tanggal_lahir=mysqli_real_escape_string($conn, $_POST['ibu_tanggal_lahir']);
+    $ibu_alamat=mysqli_real_escape_string($conn, $_POST['ibu_alamat']);
+    tambahDataIbu($ibu_nik,$ibu_nama,$ibu_nama_suami,$ibu_tanggal_lahir,$ibu_alamat);
 }else if(isset($_POST['update-pengaturan'])){
     $id='1';
     $png_nama_pengaturan='Pengaturan Basic';
