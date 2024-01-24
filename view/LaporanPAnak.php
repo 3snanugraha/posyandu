@@ -88,7 +88,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    $data=getDataPemeriksaanAnak();
+                    $data=getPeriksaAnak();
                     $no=0;
                     foreach($data as $fetch){
                     $no++;
