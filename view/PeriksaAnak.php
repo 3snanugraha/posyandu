@@ -48,11 +48,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Pemeriksaan Anak</h1>
+      <h1>Pemeriksaan Anak Periode <?= date('m/Y');?></h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Pemeriksaan Anak</li>
+          <li class="breadcrumb-item active">Pemeriksaan Anak Periode <?= date('m/Y');?></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -64,9 +64,9 @@
 
           <div class="card rounded-4">
             <div class="card-body">
-              <h5 class="card-title">Pemeriksaan Anak</h5>
+              <h5 class="card-title">Pemeriksaan Anak Periode <?= date('m/Y');?></h5>
               <p>Berikut adalah semua data anak-anak gunakan <code>.Search </code> untuk mencari atau memfilter data. gunakan kolom <code>.Aksi </code> untuk mengolah data.</p>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#tambah-data-anak" class="btn btn-outline-primary mt-2 mb-4 rounded-pill"><i class="bi bi-plus-circle"></i><span> Tambahkan data </span></a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#periksa-anak" class="btn btn-outline-primary mt-2 mb-4 rounded-pill"><i class="bi bi-plus-circle"></i><span> Periksa Anak </span></a>
               <a href="<?= $_SERVER['PHP_SELF'] . "?u=data-anak"?>" class="btn btn-outline-warning mt-2 mb-4 rounded-pill"><i class="bi bi-arrow-clockwise"></i><span> Refresh data </span></a>
 
               <!-- Table with stripped rows -->
@@ -119,7 +119,7 @@
                         <?=$fetch['anak_tinggi_badan']." Cm";?>     
                     </td>
                     <td>
-                        <?php if($fetch['status_periksa']==''){
+                        <?php if($fetch['status_periksa']=='Belum Periksa'){
                             echo "<div class='badge bg-danger'>Belum Periksa</div>";
                         };?>     
                     </td>

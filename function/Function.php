@@ -197,26 +197,49 @@ function SessionCheck(){
 // Fungsi Ambil Data Pemeriksaan Anak
 function getDataPemeriksaanAnak(){
     include "../controller/Database.php";
-    $result = mysqli_query($conn, 
-    "SELECT *,YEAR(anak_tanggal_lahir) AS anak_tahun_lahir
-    FROM tblAnak
-    LEFT JOIN tblPeriksaAnak ON tblAnak.anak_NIK = tblPeriksaAnak.anak_NIK
+    // Cek Bulan Sekarang
+    $bulan_sekarang=date('m');
+    $fetch_bulan=mysqli_fetch_array(mysqli_query($conn, "SELECT *,MONTH(tanggal_periksa) AS bulan_periksa from tblPeriksaAnak ORDER BY tanggal_periksa DESC LIMIT 1;"));
     
-    UNION
-    
-    SELECT *,YEAR(anak_tanggal_lahir) AS anak_tahun_lahir
-    FROM tblAnak
-    RIGHT JOIN tblPeriksaAnak ON tblAnak.anak_NIK = tblPeriksaAnak.anak_NIK
-    WHERE tblAnak.anak_NIK IS NULL;
-    ");
-    if (!$result) {
-        die("Query error: " . mysqli_error($conn));
+    if($bulan_sekarang==$fetch_bulan['bulan_periksa']){
+            // Jika data di bulan sekarang ada, maka Tampilkan data pemeriksaan bulan sekarang
+            $result = mysqli_query($conn, "SELECT *,YEAR(tblAnak.anak_tanggal_lahir) AS anak_tahun_lahir FROM tblPeriksaAnak INNER JOIN tblAnak ON tblPeriksaAnak.anak_NIK=tblAnak.anak_NIK WHERE MONTH(tanggal_periksa)='$bulan_sekarang'");
+            if (!$result) {
+                die("Query error: " . mysqli_error($conn));
+            }
+
+            $array = [];
+            while ($box = mysqli_fetch_array($result)) {
+                $array[] = $box;
+            }
+            return $array;
+    }else{
+        echo "<script>alert('Periode bulan telah hangus. akan generate data baru untuk bulan ini. Jika ada belum ganti bulan silahkan atur kembali tanggal pada Komputer anda.');</script>";
+        $datenow=date("Y-m-d");
+        $query_anak=mysqli_query($conn, "SELECT * FROM tblAnak");
+        while($generate_anak=mysqli_fetch_array($query_anak)){
+            $generate_pemeriksaan=mysqli_query($conn, "INSERT INTO tblPeriksaAnak(anak_NIK,status_periksa,keterangan,tanggal_periksa)VALUES('$generate_anak[anak_NIK]','Belum Periksa','-','$datenow')");
+            if($generate_pemeriksaan){
+                echo "<script>console.log('Berhasil');</script>";
+            }
+        }
+        echo "<script>alert('Generate berhasil');location.reload();</script>";
+
+        // Setelah selesai generate. tampilkan data
+        $result = mysqli_query($conn, "SELECT *,YEAR(tblAnak.anak_tanggal_lahir) AS anak_tahun_lahir FROM tblPeriksaAnak INNER JOIN tblAnak ON tblPeriksaAnak.anak_NIK=tblAnak.anak_NIK");
+        if (!$result) {
+            die("Query error: " . mysqli_error($conn));
+        }
+
+        $array = [];
+        while ($box = mysqli_fetch_array($result)) {
+            $array[] = $box;
+        }
+        return $array;
+
     }
 
-    $array = [];
-    while ($box = mysqli_fetch_array($result)) {
-        $array[] = $box;
-    }
-    return $array;
+    
+
 }
 ?>
