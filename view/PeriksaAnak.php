@@ -86,7 +86,6 @@
                     <th scope="col">LILA</th>
                     <th scope="col">LK</th>
                     <th scope="col">Status Pemeriksaan</th>
-                    <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -129,13 +128,9 @@
 
                     <td>
                         <?php if($fetch['status_periksa']=='Belum Periksa'){
-                            echo "<div class='badge bg-danger'>Belum Periksa</div>";
-                            echo "<a href='#' class='btn btn-sm btn-outline-success rounded-5'>Periksa</a>";
+                            echo "<div class='badge bg-danger mb-2'>Belum Periksa</div>";
+                            echo "<a href='#' data-bs-toggle='modal' data-bs-target='#periksa-anak-entry' class='btn btn-sm btn-outline-primary rounded-5'><i class='bi bi-calendar2-check-fill'></i><span> Periksa</span></a>";
                         };?>     
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-outline-warning rounded-pill mt-1"><i class="bi bi-pencil-square"></i></a>
-                        <a onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" href="<?= $_SERVER['PHP_SELF'] . '?u=del-data-anak&nik=' . $fetch['anak_NIK'] ?>" class="btn btn-sm btn-outline-danger rounded-pill mt-1"><i class="bi bi-trash"></i></a>
                     </td>
                   </tr>
                   <?php } ?>
