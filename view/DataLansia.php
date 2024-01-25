@@ -69,14 +69,12 @@
                 <thead>
                   <tr>
                     <th scope="col">#No</th>
-                    <th scope="col">NIK Anak</th>
+                    <th scope="col">NIK</th>
                     <th scope="col">Nama Lengkap</th>
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">TTL</th>
                     <th scope="col">Usia</th>
-                    <th scope="col">Jadwal Pemeriksaan</th>
-                    <th scope="col">Hasil Pemeriksaan</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -104,12 +102,6 @@
                     <td><?=$fetch['lansia_tempat_lahir'] . ", " . $fetch['lansia_tanggal_lahir'];?></td>
                     <td>
                         <?=intval(date('Y'))-intval($fetch['lansia_tahun_lahir']) . " Tahun";?>
-                    </td>
-                    <td>
-                        <?=$fetch['lansia_jadwal_pemeriksaan'];?>
-                    </td>
-                    <td>
-                        <?=$fetch['lansia_hasil_pemeriksaan'];?>
                     </td>
                     <td>
                         <a href="#" class="btn btn-sm btn-outline-warning rounded-pill mt-1"><i class="bi bi-pencil-square"></i></a>

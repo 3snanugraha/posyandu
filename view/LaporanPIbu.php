@@ -76,6 +76,7 @@
                     <th scope="col">Nama Suami</th>
                     <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Usia</th>
+                    <th scope="col">Jenis Pelayanan</th>
                     <th scope="col">Keterangan</th>
                     <th scope="col">Status Pemeriksaan</th>
                     <th scope="col">Periode/Bulan</th>
@@ -104,6 +105,9 @@
                     </td>
                     <td>
                         <?=intval(date('Y'))-intval($fetch['ibu_tahun_lahir']) . " Tahun";?>
+                    </td>
+                    <td>
+                        <?=$fetch['jenis_pelayanan'];?>     
                     </td>
                     <td>
                         <?=$fetch['keterangan'];?>     
