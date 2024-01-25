@@ -122,6 +122,71 @@ function hitungDataAnak(){
 
 }
 
+// Fungsi Hitung data
+function hitungDataIbu(){
+    include "../controller/Database.php";
+    $result=mysqli_query($conn, "SELECT * FROM tblIbu");
+    if ($result) 
+    { 
+        $jumlah_row = mysqli_num_rows($result); 
+        return $jumlah_row;
+        mysqli_free_result($result); 
+    } 
+
+}
+
+// Fungsi Hitung data
+function hitungDataLansia(){
+    include "../controller/Database.php";
+    $result=mysqli_query($conn, "SELECT * FROM tblLansia");
+    if ($result) 
+    { 
+        $jumlah_row = mysqli_num_rows($result); 
+        return $jumlah_row;
+        mysqli_free_result($result); 
+    } 
+
+}
+
+// Fungsi Hitung data
+function hitungDataPeriksaLansia(){
+    include "../controller/Database.php";
+    $result=mysqli_query($conn, "SELECT * FROM tblPeriksaLansia");
+    if ($result) 
+    { 
+        $jumlah_row = mysqli_num_rows($result); 
+        return $jumlah_row;
+        mysqli_free_result($result); 
+    } 
+
+}
+
+// Fungsi Hitung data
+function hitungDataPeriksaIbu(){
+    include "../controller/Database.php";
+    $result=mysqli_query($conn, "SELECT * FROM tblPeriksaIbu");
+    if ($result) 
+    { 
+        $jumlah_row = mysqli_num_rows($result); 
+        return $jumlah_row;
+        mysqli_free_result($result); 
+    } 
+
+}
+
+// Fungsi Hitung data
+function hitungDataPeriksaAnak(){
+    include "../controller/Database.php";
+    $result=mysqli_query($conn, "SELECT * FROM tblPeriksaAnak");
+    if ($result) 
+    { 
+        $jumlah_row = mysqli_num_rows($result); 
+        return $jumlah_row;
+        mysqli_free_result($result); 
+    } 
+
+}
+
 // Update Setting
 function updatePengaturan($id,$png_nama_pengaturan,$png_nama_posyandu,$png_alamat_posyandu,$png_no_telepon){
     include "../controller/Database.php";
