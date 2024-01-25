@@ -46,53 +46,40 @@ $fetchdata_pengaturan = getDataPengaturan();
             <img src="../assets/img/logoposyandu.png" width="100%" alt="">
         </div>
         <div class="col-8">
-            <h1 class="mt-5">Posyandu <?= $fetchdata_pengaturan['png_nama_posyandu'];?></h1>
+            <h1 class="mt-5">Data Keluarga Berencana Posyandu <?= $fetchdata_pengaturan['png_nama_posyandu'];?></h1>
             <p><?= $fetchdata_pengaturan['png_alamat_posyandu'];?></p>
         </div>
     </div>    
     
     <hr>
-	<b><p class="text-center">Laporan Hasil Posyandu <?= $fetchdata_pengaturan['png_nama_posyandu'];?> Periode <?= $dari_tanggal;?> S/D <?= $sampai_tanggal; ?></p></b>
+	<b><p class="text-center">Data Hasil KB <?= $fetchdata_pengaturan['png_nama_posyandu'];?> Periode <?= $dari_tanggal;?> S/D <?= $sampai_tanggal; ?></p></b>
 	<table>
 		<thead>
 			<tr>
 				<th>#No</th>
-				<th>Nama Balita</th>
-				<th>Tanggal Lahir</th>
-				<th>JK</th>
-				<th>TB(CM)</th>
-				<th>BB(KG)</th>
-				<th>LILA(CM)</th>
-				<th>LK(CM)</th>
-				<th>Status</th>
+				<th>Nama Akseptor</th>
+				<th>NIK</th>
+				<th>Nama Suami</th>
+				<th>Usia</th>
+				<th>Jenis Pelayanan</th>
 				<th>Keterangan</th>
 				<th>BL/TH Entri</th>
 			</tr>
 		</thead>
 		<tbody>
             <?php
-            $fetchdata_laporan=cetakLaporanAnak($dari_tanggal,$sampai_tanggal);
+            $fetchdata_laporan=cetakLaporanIbu($dari_tanggal,$sampai_tanggal);
             $no=0;
             foreach($fetchdata_laporan as $fetch){
             $no++;
             ?>
 			<tr>
 				<td><?= $no; ?></td>
-				<td><?= $fetch['anak_nama_anak']; ?></td>
-				<td><?= $fetch['anak_tanggal_lahir']; ?></td>
-				<td>
-                <?php if($fetch['anak_jenis_kelamin']=='Laki-Laki'){
-                    echo "L";
-                }else{
-                    echo "P";    
-                }
-                ?>
-                </td>
-				<td><?= $fetch['periksa_tb']; ?></td>
-				<td><?= $fetch['periksa_bb']; ?></td>
-				<td><?= $fetch['periksa_lila']; ?></td>
-				<td><?= $fetch['periksa_lk']; ?></td>
-				<td><?= $fetch['status_periksa']; ?></td>
+				<td><?= $fetch['ibu_nama']; ?></td>
+				<td><?= $fetch['ibu_nik']; ?></td>
+				<td><?= $fetch['ibu_nama_suami'];?></td>
+				<td><?=intval(date('Y'))-intval($fetch['ibu_tahun_lahir']) . " Tahun";?></td>
+				<td><?= $fetch['jenis_pelayanan']; ?></td>
 				<td><?= $fetch['keterangan']; ?></td>
 				<td>
                     <?php 

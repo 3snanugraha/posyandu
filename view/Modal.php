@@ -524,3 +524,50 @@
   </div>
 </div>
 <!-- End modal -->
+
+<!-- Modal Cetak Laporan Pemeriksaan Ibu -->
+<div class="modal fade" id="cetak-laporan-ibu" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Cetak Laporan Pemeriksaan Ibu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="../controller/Controller.php" method="post">
+        <div class="d-flex justify-content-center">
+        <img class="img-fluid" width="120px" width="auto" src="../assets/img/kid.png" rel="icon">
+        </div>
+        
+          <h6 class="text-center">Silahkan pilih filter laporan di bawah ini. </h6><hr>
+
+          <div class="row mt-5">
+            <div class="col-3">
+              <label for="dari_tanggal">Dari Tanggal</label>
+            </div>
+            <div class="col-9">
+              <input type="date" class="form-control rounded-pill" name="dari_tanggal">
+            </div>
+          </div>
+
+          <div class="row mt-2 mb-5">
+            <div class="col-3">
+              <label for="sampai_tanggal">Sampai Tanggal</label>
+            </div>
+            <div class="col-9">
+              <input type="date" class="form-control rounded-pill" name="sampai_tanggal">
+            </div>
+          </div>
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batalkan</button>
+         <button class="btn btn-primary rounded-pill" type="submit" name="cetak-laporan-ibu" href="#">Cetak Laporan</button>
+      <br>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End modal -->

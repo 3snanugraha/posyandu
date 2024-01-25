@@ -71,16 +71,11 @@
                 <thead>
                   <tr>
                     <th scope="col">#No</th>
-                    <th scope="col">NIK Anak</th>
-                    <th scope="col">Nama Anak</th>
-                    <th scope="col">Nama Ibu</th>
-                    <th scope="col">Jenis Kelamin</th>
-                    <th scope="col">TTL</th>
+                    <th scope="col">NIK Ibu</th>
+                    <th scope="col">Nama Lengkap</th>
+                    <th scope="col">Nama Suami</th>
+                    <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Usia</th>
-                    <th scope="col">BB</th>
-                    <th scope="col">TB</th>
-                    <th scope="col">LILA</th>
-                    <th scope="col">LK</th>
                     <th scope="col">Keterangan</th>
                     <th scope="col">Status Pemeriksaan</th>
                     <th scope="col">Periode/Bulan</th>
@@ -96,32 +91,19 @@
                   <tr>
                     <th scope="row"><b>&nbsp;&nbsp;&nbsp;&nbsp;<?=$no;?></b></th>
                     <td>
-                        <?=$fetch['anak_NIK'];?>
+                        <?=$fetch['ibu_nik'];?>
                     </td>
                     <td>
-                        <?=$fetch['anak_nama_anak'];?>
+                        <?=$fetch['ibu_nama'];?>
                     </td>               
                     <td>
-                        <?=$fetch['anak_nama_ibu'];?>
+                        <?=$fetch['ibu_nama_suami'];?>
                     </td>  
                     <td>
-                        <?=$fetch['anak_jenis_kelamin'];?>
-                    </td>
-                    <td><?=$fetch['anak_tempat_lahir'] . ", " . $fetch['anak_tanggal_lahir'];?></td>
-                    <td>
-                        <?=intval(date('Y'))-intval($fetch['anak_tahun_lahir']) . " Tahun";?>
+                        <?=$fetch['ibu_tanggal_lahir'];?>
                     </td>
                     <td>
-                        <?=$fetch['periksa_bb']." Kg";?>
-                    </td>
-                    <td>
-                        <?=$fetch['periksa_tb']." Cm";?>     
-                    </td>
-                    <td>
-                        <?=$fetch['periksa_lila']." Cm";?>     
-                    </td>
-                    <td>
-                        <?=$fetch['periksa_lk']." Cm";?>     
+                        <?=intval(date('Y'))-intval($fetch['ibu_tahun_lahir']) . " Tahun";?>
                     </td>
                     <td>
                         <?=$fetch['keterangan'];?>     

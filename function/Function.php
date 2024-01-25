@@ -232,6 +232,21 @@ function getDataPemeriksaanIbu(){
     }
 }
 
+// Cetak Laporan Ibu
+function cetakLaporanIbu($dari_tanggal,$sampai_tanggal){
+    include "../controller/Database.php";
+    $result = mysqli_query($conn, "SELECT *,YEAR(tblIbu.ibu_tanggal_lahir) AS ibu_tahun_lahir FROM tblPeriksaIbu INNER JOIN tblIbu ON tblPeriksaIbu.ibu_nik=tblIbu.ibu_nik WHERE tanggal_periksa BETWEEN '$dari_tanggal' AND '$sampai_tanggal'");
+    if (!$result) {
+        die("Query error: " . mysqli_error($conn));
+    }
+
+    $array = [];
+    while ($box = mysqli_fetch_array($result)) {
+        $array[] = $box;
+    }
+    return $array;
+}
+
 // Fungsi Tambah Data Ibu
 function tambahDataIbu($ibu_nik,$ibu_nama,$ibu_nama_suami,$ibu_tanggal_lahir,$ibu_alamat){
     include "../controller/Database.php";
@@ -255,7 +270,7 @@ function tambahDataIbu($ibu_nik,$ibu_nama,$ibu_nama_suami,$ibu_tanggal_lahir,$ib
 // Get Data Periksa Ibu
 function getPeriksaIbu(){
     include "../controller/Database.php";
-    $result = mysqli_query($conn, "SELECT * FROM tblPeriksaIbu INNER JOIN tblIbu ON tblPeriksaIbu.ibu_nik=tblIbu.ibu_nik");
+    $result = mysqli_query($conn, "SELECT *,YEAR(tblIbu.ibu_tanggal_lahir) AS ibu_tahun_lahir FROM tblPeriksaIbu INNER JOIN tblIbu ON tblPeriksaIbu.ibu_nik=tblIbu.ibu_nik");
     if (!$result) {
         die("Query error: " . mysqli_error($conn));
     }
@@ -372,7 +387,7 @@ function getDataPemeriksaanAnak(){
 // Get Data Periksa Anak
 function getPeriksaAnak(){
     include "../controller/Database.php";
-    $result = mysqli_query($conn, "SELECT * FROM tblPeriksaAnak INNER JOIN tblAnak ON tblPeriksaAnak.anak_NIK=tblAnak.anak_NIK");
+    $result = mysqli_query($conn, "SELECT *,YEAR(tblAnak.anak_tanggal_lahir) AS anak_tahun_lahir FROM tblPeriksaAnak INNER JOIN tblAnak ON tblPeriksaAnak.anak_NIK=tblAnak.anak_NIK");
     if (!$result) {
         die("Query error: " . mysqli_error($conn));
     }
