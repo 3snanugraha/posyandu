@@ -1,6 +1,8 @@
 <?php
 $fetchdata_pengaturan = array();
 $fetchdata_pengaturan = getDataPengaturan();
+$date_dari=date_create($dari_tanggal);
+$date_sampai=date_create($sampai_tanggal);
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,7 +54,7 @@ $fetchdata_pengaturan = getDataPengaturan();
     </div>    
     
     <hr>
-	<b><p class="text-center">Laporan Hasil Posyandu <?= $fetchdata_pengaturan['png_nama_posyandu'];?> Periode <?= $dari_tanggal;?> S/D <?= $sampai_tanggal; ?></p></b>
+	<b><p class="text-center">Laporan Hasil Posyandu <?= $fetchdata_pengaturan['png_nama_posyandu'];?> Periode <?= date_format($date_dari, "M Y");?> S/D <?= date_format($date_sampai, "M Y"); ?></p></b>
 	<table>
 		<thead>
 			<tr>
