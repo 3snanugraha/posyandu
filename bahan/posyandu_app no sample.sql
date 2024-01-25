@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 25, 2024 at 11:37 AM
+-- Generation Time: Jan 25, 2024 at 11:39 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -155,18 +155,6 @@ CREATE TABLE `tblPeriksaAnak` (
   `tanggal_periksa` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tblPeriksaAnak`
---
-
-INSERT INTO `tblPeriksaAnak` (`id_pemeriksaan`, `anak_NIK`, `status_periksa`, `periksa_tb`, `periksa_bb`, `periksa_lila`, `periksa_lk`, `keterangan`, `tanggal_periksa`) VALUES
-(93, '3121212521521405', 'Belum Periksa', '-', '-', '-', '-', '-', '2024-01-25'),
-(94, '3121212521521425', 'Belum Periksa', '-', '-', '-', '-', '-', '2024-01-25'),
-(95, '3121212521521463', 'Belum Periksa', '-', '-', '-', '-', '-', '2024-01-25'),
-(96, '3121212521521465', 'Belum Periksa', '-', '-', '-', '-', '-', '2024-01-25'),
-(97, '3121212521521487', 'Belum Periksa', '-', '-', '-', '-', '-', '2024-01-25'),
-(98, '320735326316461', 'Belum Periksa', '-', '-', '-', '-', '-', '2024-01-25');
-
 -- --------------------------------------------------------
 
 --
@@ -181,15 +169,6 @@ CREATE TABLE `tblPeriksaIbu` (
   `keterangan` text NOT NULL,
   `status_periksa` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tblPeriksaIbu`
---
-
-INSERT INTO `tblPeriksaIbu` (`id_pemeriksaan`, `ibu_nik`, `jenis_pelayanan`, `tanggal_periksa`, `keterangan`, `status_periksa`) VALUES
-(4, '3207081406920006', 'Pil', '2024-01-25', 'Sudah sesuai Dosis', 'Sudah Periksa'),
-(5, '3207081407920001', '-', '2024-01-25', '-', 'Belum Periksa'),
-(6, '3207081412950004', '-', '2024-01-25', '-', 'Belum Periksa');
 
 --
 -- Indexes for dumped tables
