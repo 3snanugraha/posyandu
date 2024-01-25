@@ -498,4 +498,52 @@ function cetakLaporanAnak($dari_tanggal,$sampai_tanggal){
     }
     return $array;
 }
+
+
+// Fungsi Lansia
+// Fungsi Ambil Data Pemeriksaan Anak
+function getDataPemeriksaanLansia(){
+    include "../controller/Database.php";
+    // Cek Bulan Sekarang
+    $bulan_sekarang=date('m');
+    $fetch_bulan=mysqli_fetch_array(mysqli_query($conn, "SELECT *,MONTH(tanggal_periksa) AS bulan_periksa from tblPeriksaLansia ORDER BY tanggal_periksa DESC LIMIT 1;"));
+    
+    if($bulan_sekarang==$fetch_bulan['bulan_periksa']){
+            // Jika data di bulan sekarang ada, maka Tampilkan data pemeriksaan bulan sekarang
+            $result = mysqli_query($conn, "SELECT *,YEAR(tblLansia.lansia_tanggal_lahir) AS lansia_tahun_lahir FROM tblPeriksaLansia INNER JOIN tblLansia ON tblPeriksaLansia.lansia_NIK=tblLansia.lansia_NIK WHERE MONTH(tanggal_periksa)='$bulan_sekarang'");
+            if (!$result) {
+                die("Query error: " . mysqli_error($conn));
+            }
+
+            $array = [];
+            while ($box = mysqli_fetch_array($result)) {
+                $array[] = $box;
+            }
+            return $array;
+    }else{
+        echo "<script>alert('Periode bulan telah hangus. akan generate data baru untuk bulan ini. Jika ada belum ganti bulan silahkan atur kembali tanggal pada Komputer anda.');</script>";
+        $datenow=date("Y-m-d");
+        $query_lansia=mysqli_query($conn, "SELECT * FROM tblLansia");
+        while($generate_lansia=mysqli_fetch_array($query_lansia)){
+            $generate_pemeriksaan=mysqli_query($conn, "INSERT INTO tblPeriksaLansia(lansia_NIK,periksa_tb,periksa_bb,body_fat,tensi,gula_darah,status_periksa,tanggal_periksa,keterangan)VALUES('$generate_lansia[lansia_NIK]','-','-','-','-','-','Belum Periksa','$datenow','-')");
+            if($generate_pemeriksaan){
+                echo "<script>console.log('Berhasil');</script>";
+            }
+        }
+        echo "<script>alert('Generate berhasil');location.reload();</script>";
+
+        // Setelah selesai generate. tampilkan data
+        $result = mysqli_query($conn, "SELECT *,YEAR(tblLansia.lansia_tanggal_lahir) AS lansia_tahun_lahir FROM tblPeriksaLansia INNER JOIN tblLansia ON tblPeriksaLansia.lansia_NIK=tblLansia.lansia_NIK");
+        if (!$result) {
+            die("Query error: " . mysqli_error($conn));
+        }
+
+        $array = [];
+        while ($box = mysqli_fetch_array($result)) {
+            $array[] = $box;
+        }
+        return $array;
+
+    }
+}
 ?>
