@@ -561,4 +561,41 @@ function getDataPemeriksaanLansia(){
 
     }
 }
+
+// Entry Ibu / Update Pemeriksaan Ibu
+function periksaLansia($lansia_NIK,$periksa_tb,$periksa_bb,$body_fat,$tensi,$gula_darah,$keterangan){
+    include "../controller/Database.php";
+    $tanggal_periksa=date("Y-m-d");
+    $update=mysqli_query($conn, "UPDATE tblPeriksaLansia SET 
+    status_periksa='Sudah Periksa',
+    tanggal_periksa='$tanggal_periksa',
+    periksa_tb='$periksa_tb',
+    periksa_bb='$periksa_bb',
+    body_fat='$body_fat',
+    tensi='$tensi',
+    gula_darah='$gula_darah',
+    keterangan='$keterangan'
+    WHERE lansia_NIK='$lansia_NIK'");
+    
+    if($update){
+        echo "<script>alert('Pemeriksaan Lansia Berhasil. Data berhasil diupdate.');window.location='../router/Router.php?u=pemeriksaan-lansia';</script>";
+    }else{
+        echo "<script>alert('Pemeriksaan Lansia Gagal. Data tidak dapat diupdate.');window.location='../router/Router.php?u=pemeriksaan-lansia';</script>";
+    }
+}
+
+// Cetak Laporan Lansia
+function cetakLaporanLansia($dari_tanggal,$sampai_tanggal){
+    include "../controller/Database.php";
+    $result = mysqli_query($conn, "SELECT * FROM tblPeriksaLansia INNER JOIN tblLansia ON tblPeriksaLansia.lansia_NIK=tblLansia.lansia_NIK WHERE tanggal_periksa BETWEEN '$dari_tanggal' AND '$sampai_tanggal'");
+    if (!$result) {
+        die("Query error: " . mysqli_error($conn));
+    }
+
+    $array = [];
+    while ($box = mysqli_fetch_array($result)) {
+        $array[] = $box;
+    }
+    return $array;
+}
 ?>

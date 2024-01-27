@@ -54,6 +54,9 @@ if($url=="login"){
 }else if($url=="laporan-pemeriksaan-ibu"){
     SessionCheck();
     include "../view/LaporanPIbu.php";
+}else if($url=="laporan-pemeriksaan-lansia"){
+    SessionCheck();
+    include "../view/LaporanPLansia.php";
 }else if($url=="del-data-ibu"){
     SessionCheck();
     $nik=$_GET['nik'];    

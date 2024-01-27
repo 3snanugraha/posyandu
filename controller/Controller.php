@@ -32,6 +32,15 @@ if(isset($_POST['login'])){
     $jenis_pelayanan=mysqli_real_escape_string($conn, $_POST['jenis_pelayanan']);
     $keterangan=mysqli_real_escape_string($conn, $_POST['keterangan']);
     periksaIbu($ibu_nik,$jenis_pelayanan,$keterangan);
+}else if(isset($_POST['periksa-lansia'])){
+    $lansia_NIK=mysqli_real_escape_string($conn, $_POST['lansia_NIK']);
+    $periksa_tb=mysqli_real_escape_string($conn, $_POST['periksa_tb']);
+    $periksa_bb=mysqli_real_escape_string($conn, $_POST['periksa_bb']);
+    $body_fat=mysqli_real_escape_string($conn, $_POST['body_fat']);
+    $tensi=mysqli_real_escape_string($conn, $_POST['tensi']);
+    $gula_darah=mysqli_real_escape_string($conn, $_POST['gula_darah']);
+    $keterangan=mysqli_real_escape_string($conn, $_POST['keterangan']);
+    periksaLansia($lansia_NIK,$periksa_tb,$periksa_bb,$body_fat,$tensi,$gula_darah,$keterangan);
 }else if(isset($_POST['cetak-laporan-ibu'])){
     $dari_tanggal=mysqli_real_escape_string($conn, $_POST['dari_tanggal']);
     $sampai_tanggal=mysqli_real_escape_string($conn, $_POST['sampai_tanggal']);
@@ -40,6 +49,10 @@ if(isset($_POST['login'])){
     $dari_tanggal=mysqli_real_escape_string($conn, $_POST['dari_tanggal']);
     $sampai_tanggal=mysqli_real_escape_string($conn, $_POST['sampai_tanggal']);
     include "../view/CetakLaporanAnak.php";
+}else if(isset($_POST['cetak-laporan-lansia'])){
+    $dari_tanggal=mysqli_real_escape_string($conn, $_POST['dari_tanggal']);
+    $sampai_tanggal=mysqli_real_escape_string($conn, $_POST['sampai_tanggal']);
+    include "../view/CetakLaporanLansia.php";
 }else if(isset($_POST['tambah-data-ibu'])){
     $ibu_nik=mysqli_real_escape_string($conn, $_POST['ibu_nik']);
     $ibu_nama=mysqli_real_escape_string($conn, $_POST['ibu_nama']);
