@@ -194,8 +194,8 @@
   <script>
     // In your Javascript (external .js resource or <script> tag)
     $(document).ready(function() {
-        $('#anak_NIK').select2({
-          dropdownParent: $('#periksa-anak .modal-content'),
+        $('#lansia_NIK').select2({
+          dropdownParent: $('#periksa-lansia .modal-content'),
           theme: "bootstrap-5",
         });
     });
@@ -205,39 +205,43 @@
 
 
 <script>
-    var EntryPeriksa = document.getElementById('periksa-anak-entry')
-    EntryPeriksa.addEventListener('show.bs.modal', function (event) {
+    var PeriksaLansiaModal = document.getElementById('periksa-lansia')
+    PeriksaLansiaModal.addEventListener('show.bs.modal', function (event) {
     // Button that triggered the modal
     var button = event.relatedTarget
     // Extract info from data-bs-* attributes
     var id_pemeriksaan = button.getAttribute('data-bs-id_pemeriksaan')
-    var anak_NIK = button.getAttribute('data-bs-anak_NIK')
-    var niknamaanak = button.getAttribute('data-bs-niknamaanak')
+    var lansia_NIK = button.getAttribute('data-bs-lansia_NIK')
+    var niknamalansia = button.getAttribute('data-bs-niknamalansia')
     var periksa_tb = button.getAttribute('data-bs-periksa_tb')
     var periksa_bb = button.getAttribute('data-bs-periksa_bb')
-    var periksa_lila = button.getAttribute('data-bs-periksa_lila')
-    var periksa_lk = button.getAttribute('data-bs-periksa_lk')
+    var body_fat = button.getAttribute('data-bs-body_fat')
+    var tensi = button.getAttribute('data-bs-tensi')
+    var gula_darah = button.getAttribute('data-bs-gula_darah')
+    var keterangan = button.getAttribute('data-bs-keterangan')
     // If necessary, you could initiate an AJAX request here
     // and then do the updating in a callback.
     //
     // Update the modal's content.
-    var modalTitle = EntryPeriksa.querySelector('.modal-title')
-    var niknamaanak_inp = EntryPeriksa.querySelector('.modal-body #niknamaanak')
-    var periksa_tb_inp = EntryPeriksa.querySelector('.modal-body #periksa_tb')
-    var periksa_bb_inp = EntryPeriksa.querySelector('.modal-body #periksa_bb')
-    var periksa_lila_inp = EntryPeriksa.querySelector('.modal-body #periksa_lila')
-    var periksa_lk_inp = EntryPeriksa.querySelector('.modal-body #periksa_lk')
-    var id_pemeriksaan_inp = EntryPeriksa.querySelector('.modal-body #id_pemeriksaan')
-    var anak_NIK_inp = EntryPeriksa.querySelector('.modal-body #anak_NIK')
+    var modalTitle = PeriksaLansiaModal.querySelector('.modal-title')
+    var niknamalansia_inp = PeriksaLansiaModal.querySelector('.modal-body #niknamaanak')
+    var periksa_tb_inp = PeriksaLansiaModal.querySelector('.modal-body #periksa_tb')
+    var periksa_bb_inp = PeriksaLansiaModal.querySelector('.modal-body #periksa_bb')
+    var periksa_body_fat_inp = PeriksaLansiaModal.querySelector('.modal-body #body_fat')
+    var periksa_tensi_inp = PeriksaLansiaModal.querySelector('.modal-body #tensi')
+    var id_pemeriksaan_inp = PeriksaLansiaModal.querySelector('.modal-body #id_pemeriksaan')
+    var gula_darah_inp = PeriksaLansiaModal.querySelector('.modal-body #gula_darah')
+    var keterangan_inp = PeriksaLansiaModal.querySelector('.modal-body #keterangan')
 
-    modalTitle.textContent = 'Entri Pemeriksaan ID' + id_pemeriksaan
-    niknamaanak_inp.value = niknamaanak
+    modalTitle.textContent = 'Pemeriksaan ID' + id_pemeriksaan
+    niknamalansia_inp.value = niknamalansia
     periksa_tb_inp.value = periksa_tb
     periksa_bb_inp.value = periksa_bb
-    periksa_lila_inp.value = periksa_lila
-    periksa_lk_inp.value = periksa_lk
+    periksa_body_fat_inp.value = body_fat
+    periksa_tensi_inp.value = tensi
     id_pemeriksaan_inp.value = id_pemeriksaan
-    anak_NIK_inp.value = anak_NIK
+    gula_darah_inp.value = gula_darah
+    keterangan_inp.value = keterangan
   })
 </script>
 </html>
