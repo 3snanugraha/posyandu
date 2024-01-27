@@ -501,7 +501,22 @@ function cetakLaporanAnak($dari_tanggal,$sampai_tanggal){
 
 
 // Fungsi Lansia
-// Fungsi Ambil Data Pemeriksaan Anak
+// Get Data Periksa Lansia
+function getPeriksaLansia(){
+    include "../controller/Database.php";
+    $result = mysqli_query($conn, "SELECT *,YEAR(tblLansia.lansia_tanggal_lahir) AS lansia_tahun_lahir FROM tblPeriksaLansia INNER JOIN tblLansia ON tblPeriksaLansia.lansia_NIK=tblLansia.lansia_NIK");
+    if (!$result) {
+        die("Query error: " . mysqli_error($conn));
+    }
+
+    $array = [];
+    while ($box = mysqli_fetch_array($result)) {
+        $array[] = $box;
+    }
+    return $array;
+}
+
+// Fungsi Ambil Data Pemeriksaan Lansia
 function getDataPemeriksaanLansia(){
     include "../controller/Database.php";
     // Cek Bulan Sekarang

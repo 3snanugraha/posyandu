@@ -62,7 +62,7 @@
             <div class="card-body">
               <h5 class="card-title">Pemeriksaan Lansia Periode <?= date('m/Y');?></h5>
               <p>Berikut adalah semua data pemeriksaan lansia gunakan <code>.Search </code> untuk mencari atau memfilter data. gunakan kolom <code>.Periksa </code> untuk mengolah data.</p>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#periksa-lansia" class="btn btn-outline-primary mt-2 mb-4 rounded-pill"><i class="bi bi-plus-circle"></i><span> Periksa Lansia </span></a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#periksa-lansia-entry" class="btn btn-outline-primary mt-2 mb-4 rounded-pill"><i class="bi bi-plus-circle"></i><span> Periksa Lansia </span></a>
               <a href="#" onclick="location.reload();" class="btn btn-outline-warning mt-2 mb-4 rounded-pill"><i class="bi bi-arrow-clockwise"></i><span> Refresh data </span></a>
 
               <!-- Table with stripped rows -->
@@ -194,8 +194,8 @@
   <script>
     // In your Javascript (external .js resource or <script> tag)
     $(document).ready(function() {
-        $('#lansia_NIK').select2({
-          dropdownParent: $('#periksa-lansia .modal-content'),
+        $('#lansia_NIK_select').select2({
+          dropdownParent: $('#periksa-lansia-entry .modal-content'),
           theme: "bootstrap-5",
         });
     });
@@ -224,7 +224,8 @@
     //
     // Update the modal's content.
     var modalTitle = PeriksaLansiaModal.querySelector('.modal-title')
-    var niknamalansia_inp = PeriksaLansiaModal.querySelector('.modal-body #niknamaanak')
+    var niknamalansia_inp = PeriksaLansiaModal.querySelector('.modal-body #niknamalansia')
+    var lansia_NIK_inp = PeriksaLansiaModal.querySelector('.modal-body #lansia_NIK')
     var periksa_tb_inp = PeriksaLansiaModal.querySelector('.modal-body #periksa_tb')
     var periksa_bb_inp = PeriksaLansiaModal.querySelector('.modal-body #periksa_bb')
     var periksa_body_fat_inp = PeriksaLansiaModal.querySelector('.modal-body #body_fat')
@@ -233,7 +234,7 @@
     var gula_darah_inp = PeriksaLansiaModal.querySelector('.modal-body #gula_darah')
     var keterangan_inp = PeriksaLansiaModal.querySelector('.modal-body #keterangan')
 
-    modalTitle.textContent = 'Pemeriksaan ID' + id_pemeriksaan
+    modalTitle.textContent = 'Pemeriksaan ID ' + id_pemeriksaan
     niknamalansia_inp.value = niknamalansia
     periksa_tb_inp.value = periksa_tb
     periksa_bb_inp.value = periksa_bb
@@ -242,6 +243,7 @@
     id_pemeriksaan_inp.value = id_pemeriksaan
     gula_darah_inp.value = gula_darah
     keterangan_inp.value = keterangan
+    lansia_NIK_inp.value = lansia_NIK
   })
 </script>
 </html>

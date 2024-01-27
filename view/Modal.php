@@ -571,3 +571,247 @@
   </div>
 </div>
 <!-- End modal -->
+
+
+<!-- Modal untuk Lansia -->
+<!-- Modal Periksa Lansia (Edit) -->
+<div class="modal fade" id="periksa-lansia" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Pemeriksaan Lansia pada Periode Ini</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="../controller/Controller.php" method="post">
+        <div class="d-flex justify-content-center">
+        <img class="img-fluid" width="120px" width="auto" src="../assets/img/lansia.png" rel="icon">
+        </div>
+        
+          <h6 class="text-center">Silahkan lengkapi data dengan lengkap di bawah ini. </h6><hr>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="nik">NIK & Nama</label>
+            </div>
+            <div class="col-9">
+              <input type="text" class="form-control rounded-pill" name="niknamalansia" id="niknamalansia" readonly>
+              <input type="hidden" class="form-control rounded-pill" name="id_pemeriksaan" id="id_pemeriksaan" readonly>
+              <input type="hidden" class="form-control rounded-pill" name="lansia_NIK" id="lansia_NIK" readonly>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="periksa_tb">Tinggi Badan (Cm)</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control rounded-pill" type="number" name="periksa_tb" id="periksa_tb">
+            </div>
+          </div>
+          
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="periksa_bb">Berat Badan (Kg)</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control rounded-pill" type="number" name="periksa_bb" id="periksa_bb">
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="body_fat">Body Fat (%)</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control rounded-pill" type="number" name="body_fat" id="body_fat">
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="tensi">Tensi</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control rounded-pill" type="number" name="tensi" id="tensi">
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="gula_darah">Gula Darah</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control rounded-pill" type="number" name="gula_darah" id="gula_darah">
+            </div>
+          </div>
+
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="keterangan">Keterangan</label>
+            </div>
+            <div class="col-9">
+              <textarea rows="3" class="form-control rounded-3" name="keterangan" id="keterangan" required></textarea>
+            </div>
+          </div>
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batalkan</button>
+         <button class="btn btn-primary rounded-pill" type="submit" name="periksa-lansia" href="#">Simpan</button>
+      <br>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End modal -->
+
+<!-- Modal Periksa Ibu (Edit) -->
+<div class="modal fade" id="periksa-lansia-entry" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Pemeriksaan Lansia pada Periode Ini</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="../controller/Controller.php" method="post">
+        <div class="d-flex justify-content-center">
+        <img class="img-fluid" width="120px" width="auto" src="../assets/img/mother.png" rel="icon">
+        </div>
+        
+          <h6 class="text-center">Silahkan lengkapi data dengan lengkap di bawah ini. </h6><hr>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="nik">Pilih NIK / Nama Lansia</label>
+            </div>
+            <div class="col-9">
+            <select class="form-select" id="lansia_NIK_select" name="lansia_NIK" required>
+            <option value="">Pilih NIK & Nama Lansia</option>
+              <?php
+                    $data_lansia=getPeriksaLansia();
+                    foreach($data_lansia as $fetch_lansia){
+              ?>
+              <option value="<?= $fetch_lansia['lansia_NIK'];?>"><?= $fetch_lansia['lansia_NIK'] . " - " . $fetch_lansia['lansia_nama_lengkap'];?></option>
+              <?php } ?>
+            </select>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="periksa_tb">Tinggi Badan (Cm)</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control rounded-pill" type="number" name="periksa_tb" id="periksa_tb">
+            </div>
+          </div>
+          
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="periksa_bb">Berat Badan (Kg)</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control rounded-pill" type="number" name="periksa_bb" id="periksa_bb">
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="body_fat">Body Fat (%)</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control rounded-pill" type="number" name="body_fat" id="body_fat">
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="tensi">Tensi</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control rounded-pill" type="number" name="tensi" id="tensi">
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="gula_darah">Gula Darah</label>
+            </div>
+            <div class="col-9">
+                <input class="form-control rounded-pill" type="number" name="gula_darah" id="gula_darah">
+            </div>
+          </div>
+
+
+          <div class="row mt-2">
+            <div class="col-3">
+              <label for="keterangan">Keterangan</label>
+            </div>
+            <div class="col-9">
+              <textarea rows="3" class="form-control rounded-3" name="keterangan" id="keterangan" required></textarea>
+            </div>
+          </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batalkan</button>
+         <button class="btn btn-primary rounded-pill" type="submit" name="periksa-lansia" href="#">Simpan</button>
+      <br>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End modal -->
+
+<!-- Modal Cetak Laporan Pemeriksaan Ibu -->
+<div class="modal fade" id="cetak-laporan-lansia" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Cetak Laporan Pemeriksaan Lansia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="../controller/Controller.php" method="post">
+        <div class="d-flex justify-content-center">
+        <img class="img-fluid" width="120px" width="auto" src="../assets/img/kid.png" rel="icon">
+        </div>
+        
+          <h6 class="text-center">Silahkan pilih filter laporan di bawah ini. </h6><hr>
+
+          <div class="row mt-5">
+            <div class="col-3">
+              <label for="dari_tanggal">Dari Tanggal</label>
+            </div>
+            <div class="col-9">
+              <input type="date" class="form-control rounded-pill" name="dari_tanggal">
+            </div>
+          </div>
+
+          <div class="row mt-2 mb-5">
+            <div class="col-3">
+              <label for="sampai_tanggal">Sampai Tanggal</label>
+            </div>
+            <div class="col-9">
+              <input type="date" class="form-control rounded-pill" name="sampai_tanggal">
+            </div>
+          </div>
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batalkan</button>
+         <button class="btn btn-primary rounded-pill" type="submit" name="cetak-laporan-lansia" href="#">Cetak Laporan</button>
+      <br>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End modal -->
