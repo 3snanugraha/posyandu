@@ -296,8 +296,8 @@
                     <div class="ps-3">
                       <h6>
                         <?php
-                        // $data_periksa_lansia=hitungDataPeriksaLansia(); 
-                        echo "~";
+                        $data_periksa_lansia=hitungDataPeriksaLansia();
+                        echo $data_periksa_lansia;
                         ?>
                       </h6>
                       <span class="text-success small pt-1 fw-bold">Pilih</span> <span class="text-muted small pt-2 ps-1">menu untuk olah data</span>
